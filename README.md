@@ -31,6 +31,7 @@
 | project-list - Display list of projects. | task-list - Display list of tasks. | 
 | project-create - Create new project by name. | task-create - Create new task by name. | 
 | project-clear - Remove all projects. | task-clear - Remove all tasks. |
+| project-view-by-name - View project by name. | task-view-by-name - View task by name. |
 | project-view-by-index - View project by index. | task-view-by-index - View task by index. |
 | project-view-by-id - View project by id. | task-view-by-id - View task by id. |
 | project-remove-by-name - Remove project by name. | task-remove-by-name - Remove task by name. |

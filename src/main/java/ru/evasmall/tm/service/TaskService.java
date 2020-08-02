@@ -18,14 +18,20 @@ public class TaskService {
     }
 
     public Task create(String name) {
+        if (name == null || name.isEmpty()) return null;
         return taskRepository.create(name);
     }
 
     public Task create(String name, String description) {
+        if (name == null || name.isEmpty()) return null;
+        if (description == null || description.isEmpty()) return null;
         return taskRepository.create(name, description);
     }
 
     public Task update(Long id, String name, String description) {
+        if (id == null) return null;
+        if (name == null || name.isEmpty()) return null;
+        if (description == null || description.isEmpty()) return null;
         return taskRepository.update(id, name, description);
     }
 
@@ -34,26 +40,32 @@ public class TaskService {
     }
 
     public Task findByName(String name) {
+        if (name == null || name.isEmpty()) return null;
         return taskRepository.findByName(name);
     }
 
     public Task findById(Long id) {
+        if (id == null) return null;
         return taskRepository.findById(id);
     }
 
     public Task findByIndex(int index) {
+        if (index < 0 || index > taskRepository.size() - 1) return null;
         return taskRepository.findByIndex(index);
     }
 
     public Task removeById(Long id) {
+        if (id == null ) return null;
         return taskRepository.removeById(id);
     }
 
     public Task removeByIndex(int index) {
+        if (index < 0 || index > taskRepository.size() -1) return null;
         return taskRepository.removeByIndex(index);
     }
 
     public Task removeByName(String name) {
+        if (name == null || name.isEmpty()) return null;
         return taskRepository.removeByName(name);
     }
 

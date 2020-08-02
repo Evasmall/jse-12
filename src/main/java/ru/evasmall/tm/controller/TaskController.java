@@ -1,6 +1,5 @@
 package ru.evasmall.tm.controller;
 
-import ru.evasmall.tm.repository.TaskRepository;
 import ru.evasmall.tm.entity.Task;
 import ru.evasmall.tm.service.TaskService;
 
@@ -109,6 +108,14 @@ public class TaskController extends AbstractController{
         System.out.println("ENTER TASK INDEX:");
         final int index = scanner.nextInt() - 1;
         final Task task = taskService.findByIndex(index);
+        viewTask(task);
+        return 0;
+    }
+
+    public int viewTaskByName() {
+        System.out.print("Enter name: ");
+        String name = scanner.nextLine();
+        Task task = taskService.findByName(name);
         viewTask(task);
         return 0;
     }

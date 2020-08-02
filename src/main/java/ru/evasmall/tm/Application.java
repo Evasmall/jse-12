@@ -18,20 +18,20 @@ import static ru.evasmall.tm.constant.TerminalConst.*;
 public class Application {
 
     private final ProjectRepository projectRepository = new ProjectRepository();
-    private final ProjectService projectService = new ProjectService(projectRepository);
-    private final ProjectController projectController = new ProjectController(projectService);
-
     private final TaskRepository taskRepository = new TaskRepository();
-    private final TaskService taskService = new TaskService(taskRepository);
-    private final TaskController taskController = new TaskController(taskService);
 
+    private final ProjectService projectService = new ProjectService(projectRepository);
+    private final TaskService taskService = new TaskService(taskRepository);
+
+    private final ProjectController projectController = new ProjectController(projectService);
+    private final TaskController taskController = new TaskController(taskService);
     private final SystemController systemController = new SystemController();
 
     {
-        projectRepository.create("DEMO PROJECT 1", "DESC PROJECT 1");
-        projectRepository.create("DEMO PROJECT 2", "DESC PROJECT 2");
-        taskRepository.create("TEST TASK 1", "DESC TASK 1");
-        taskRepository.create("TEST TASK 2", "DESC TASK 2");
+        projectRepository.create("DEMO_PROJECT_1", "DESC PROJECT 1");
+        projectRepository.create("DEMO_PROJECT_2", "DESC PROJECT 2");
+        taskRepository.create("TEST_TASK_1", "DESC TASK 1");
+        taskRepository.create("TEST_TASK_2", "DESC TASK 2");
     }
 
     public static void main(final String[] args) {
@@ -66,6 +66,7 @@ public class Application {
             case CMD_PROJECT_CLEAR: return projectController.clearProject();
             case CMD_PROJECT_LIST: return projectController.listProject();
 
+            case CMD_PROJECT_VIEW_BY_NAME: return projectController.viewProjectByName();
             case CMD_PROJECT_VIEW_BY_INDEX: return projectController.viewProjectByIndex();
             case CMD_PROJECT_VIEW_BY_ID: return projectController.viewProjectById();
 
@@ -80,6 +81,7 @@ public class Application {
             case CMD_TASK_CLEAR: return taskController.clearTask();
             case CMD_TASK_LIST: return taskController.listTask();
 
+            case CMD_TASK_VIEW_BY_NAME: return taskController.viewTaskByName();
             case CMD_TASK_VIEW_BY_INDEX: return taskController.viewTaskByIndex();
             case CMD_TASK_VIEW_BY_ID: return taskController.viewTaskById();
 

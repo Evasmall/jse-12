@@ -1,6 +1,5 @@
 package ru.evasmall.tm.controller;
 
-import ru.evasmall.tm.repository.ProjectRepository;
 import ru.evasmall.tm.entity.Project;
 import ru.evasmall.tm.service.ProjectService;
 
@@ -103,6 +102,14 @@ public class ProjectController extends AbstractController{
         System.out.println("NAME: " + project.getName());
         System.out.println("DESCRIPTION: " + project.getDescription());
         System.out.println("[OK]");
+    }
+
+    public int viewProjectByName() {
+        System.out.print("ENTER PROJECT NAME:");
+        String name = scanner.nextLine();
+        Project project = projectService.findByName(name);
+        viewProject(project);
+        return 0;
     }
 
     public int viewProjectByIndex() {

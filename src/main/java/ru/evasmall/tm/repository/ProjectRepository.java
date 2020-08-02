@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ProjectRepository {
 
-    private List<Project> projects = new ArrayList<>();
+    private final List<Project> projects = new ArrayList<>();
 
     public List<Project> findAll() {
         return projects;
@@ -41,12 +41,10 @@ public class ProjectRepository {
     }
 
     public Project findByIndex(int index) {
-        if (index < 0 || index > projects.size() - 1) return null;
         return projects.get(index);
     }
 
     public Project findByName(final String name) {
-        if (name == null || name.isEmpty()) return null;
         for (final Project project: projects) {
             if(project.getName().equals(name)) return project;
         }
@@ -54,7 +52,6 @@ public class ProjectRepository {
     }
 
     public Project findById(final Long id) {
-        if (id == 0) return null;
         for (final Project project: projects) {
             if(project.getId().equals(id)) return project;
         }
@@ -80,6 +77,10 @@ public class ProjectRepository {
         if (project == null) return null;
         projects.remove(project);
         return project;
+    }
+
+    public int size() {
+        return projects.size();
     }
 
 }

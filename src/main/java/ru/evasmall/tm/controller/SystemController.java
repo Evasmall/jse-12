@@ -25,6 +25,7 @@ public class SystemController {
         System.out.println("project-list - Display list of projects.");
         System.out.println("project-create - Create new project by name.");
         System.out.println("project-clear - Remove all projects.");
+        System.out.println("project-view-by-name - View project by name");
         System.out.println("project-view-by-index - View project by index.");
         System.out.println("project-view-by-id - View project by id.");
         System.out.println();
@@ -37,6 +38,7 @@ public class SystemController {
         System.out.println("task-list - Display list of tasks.");
         System.out.println("task-create - Create new task by name.");
         System.out.println("task-clear - Remove all tasks.");
+        System.out.println("task-view-by-name - View task by name");
         System.out.println("task-view-by-index - View task by index.");
         System.out.println("task-view-by-id - View task by id.");
         System.out.println();
