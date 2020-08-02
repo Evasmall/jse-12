@@ -31,6 +31,7 @@ public class SystemController {
         System.out.println();
         System.out.println("project-remove-by-name - Remove project by name.");
         System.out.println("project-remove-by-id - Remove project by id.");
+        System.out.println("project-remove-by-id-with-tasks - Remove project by id with tasks.");
         System.out.println("project-remove-by-index - Remove project by index.");
         System.out.println("project-update-by-id - Update project by id.");
         System.out.println("project-update-by-index - Update project by index.");
@@ -51,7 +52,6 @@ public class SystemController {
         System.out.println("task-list-by-project-id - Display task list by project id.");
         System.out.println("task-add-to_project-by-ids - Add task to project by ids.");
         System.out.println("task-remove-from-project-by-ids - Remove task from project by ids.");
-
         return 0;
     }
 

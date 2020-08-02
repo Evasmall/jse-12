@@ -1,5 +1,6 @@
 package ru.evasmall.tm.controller;
 
+import ru.evasmall.tm.entity.Project;
 import ru.evasmall.tm.entity.Task;
 import ru.evasmall.tm.service.ProjectTaskService;
 import ru.evasmall.tm.service.TaskService;
@@ -180,6 +181,16 @@ public class TaskController extends AbstractController{
         final Long taskId = Long.parseLong(scanner.nextLine());
         projectTaskService.removeTaskFromProject(projectId, taskId);
         System.out.println("[OK]");
+        return 0;
+    }
+
+    public int removeProjectByIdWithTasks() {
+        System.out.println("[REMOVE PROJECT WITH BY ID]");
+        System.out.println("[PLEASE ENTER PROJECT ID:");
+        final Long projectId = Long.parseLong(scanner.nextLine());
+        Project project = projectTaskService.removeProjectByIdWithTask(projectId);
+        if (project == null) System.out.println("[FAIL]");
+        else System.out.println("[OK]");
         return 0;
     }
 

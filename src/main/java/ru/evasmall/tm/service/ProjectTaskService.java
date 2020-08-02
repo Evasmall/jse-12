@@ -19,25 +19,37 @@ public class ProjectTaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> findAddByProjectId(final Long projectId) {
+    public List<Task> findAllByProjectId(final Long projectId) {
         if (projectId == null) return Collections.emptyList();
         return taskRepository.findAddByProjectId(projectId);
     }
 
-    public  Task removeTaskFromProject(final Long projectId, final Long taskId) {
+    public Task removeTaskFromProject(final Long projectId, final Long taskId) {
         final Task task = taskRepository.findByProjectIdAndId(projectId, taskId);
         if (task == null) return null;
         task.setProjectId(null);
         return task;
     }
 
-    public  Task addTaskToProject(final Long projectId, final Long taskId) {
+    public Task addTaskToProject(final Long projectId, final Long taskId) {
         final Project project = projectRepository.findById(projectId);
         if (project == null) return null;
         final Task task = taskRepository.findById(taskId);
         if (task == null) return null;
         task.setProjectId(projectId);
         return task;
+    }
+
+    public Project removeProjectByIdWithTask(final Long projectId) {
+        final Project project = projectRepository.findById(projectId);
+        if (project == null) return null;
+        final List<Task> tasks = findAllByProjectId(projectId);
+        if (tasks == null) return project;
+        for (Task task: tasks) {
+            taskRepository.removeById(task.getId());
+        }
+        projectRepository.removeById(projectId);
+        return project;
     }
 
 }

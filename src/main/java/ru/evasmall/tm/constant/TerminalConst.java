@@ -18,6 +18,8 @@ public class TerminalConst {
     public static final String CMD_PROJECT_UPDATE_BY_INDEX = "project-update-by-index";
     public static final String CMD_PROJECT_UPDATE_BY_ID = "project-update-by-id";
 
+    public static final String CMD_PROJECT_REMOVE_BY_ID_WITH_TASKS = "project-remove-by-id-with-tasks";
+
     public static final String CMD_TASK_CREATE = "task-create";
     public static final String CMD_TASK_CLEAR = "task-clear";
     public static final String CMD_TASK_LIST = "task-list";
