@@ -6,6 +6,7 @@ import ru.evasmall.tm.controller.TaskController;
 import ru.evasmall.tm.repository.ProjectRepository;
 import ru.evasmall.tm.repository.TaskRepository;
 import ru.evasmall.tm.service.ProjectService;
+import ru.evasmall.tm.service.ProjectTaskService;
 import ru.evasmall.tm.service.TaskService;
 
 import java.util.Scanner;
@@ -22,16 +23,19 @@ public class Application {
 
     private final ProjectService projectService = new ProjectService(projectRepository);
     private final TaskService taskService = new TaskService(taskRepository);
+    private final ProjectTaskService projectTaskService = new ProjectTaskService(projectRepository, taskRepository);
 
     private final ProjectController projectController = new ProjectController(projectService);
-    private final TaskController taskController = new TaskController(taskService);
+    private final TaskController taskController = new TaskController(taskService, projectTaskService);
     private final SystemController systemController = new SystemController();
 
     {
         projectRepository.create("DEMO_PROJECT_1", "DESC PROJECT 1");
         projectRepository.create("DEMO_PROJECT_2", "DESC PROJECT 2");
+        projectRepository.create("DEMO_PROJECT_3", "DESC PROJECT 3");
         taskRepository.create("TEST_TASK_1", "DESC TASK 1");
         taskRepository.create("TEST_TASK_2", "DESC TASK 2");
+        taskRepository.create("TEST_TASK_3", "DESC TASK 3");
     }
 
     public static void main(final String[] args) {
@@ -91,6 +95,10 @@ public class Application {
 
             case CMD_TASK_UPDATE_BY_INDEX: return taskController.updateTaskByIndex();
             case CMD_TASK_UPDATE_BY_ID: return taskController.updateTaskById();
+
+            case CMD_TASK_ADD_TO_PROJECT_BY_IDS: return taskController.addTaskToProjectByIds();
+            case CMD_TASK_REMOVE_FROM_PROJECT_BY_IDS: return taskController.removeTaskFromProjectByIds();
+            case CMD_TASK_LIST_BY_PROJECT_ID: return taskController.listTaskByProjectId();
 
             default: return systemController.displayError();
         }

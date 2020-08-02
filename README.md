@@ -38,4 +38,7 @@
 | project-remove-by-id - Remove project by id. | task-remove-by-id - Remove task by id. |
 | project-remove-by-index - Remove project by index. | task-remove-by-index - Remove task by index. |
 | project-update-by-id - Update project by id. | task-update-by-id - Update task by id. |
-| project-update-by-index - Update project by index. |task-update-by-index - Update task by index. |  
+| project-update-by-index - Update project by index. | task-update-by-index - Update task by index. | 
+| | task-list-by-project-id - Display task list by project id. | 
+| | task-add-to_project-by-ids - Add task to project by ids. | 
+| | task-remove-from-project-by-ids - Remove task from project by ids. | 
