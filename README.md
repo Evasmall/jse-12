@@ -41,5 +41,4 @@
 | project-update-by-index - Update project by index. | task-update-by-index - Update task by index. | 
 | | task-list-by-project-id - Display task list by project id. | 
 | | task-add-to_project-by-ids - Add task to project by ids. | 
-| | task-remove-from-project-by-ids - Remove task from project by ids. |
-| project-remove-by-id-with-tasks - Remove project by id with tasks. |  |  
+| project-remove-by-id-with-tasks - Remove project by id with tasks. | task-remove-from-project-by-ids - Remove task from project by ids. |
