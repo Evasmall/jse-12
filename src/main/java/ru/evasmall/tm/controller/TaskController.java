@@ -147,7 +147,8 @@ public class TaskController extends AbstractController{
         if (tasks == null || tasks.isEmpty()) return;
         int index = 1;
         for (final Task task: tasks) {
-            System.out.println(index + ". " + task.getId() + "; NAME: " + task.getName() + "; DESCRIPTION: " + task.getDescription());
+            System.out.println(index + ". TASKID: " + task.getId() + "; NAME: " + task.getName() + "; DESCRIPTION: "
+                    + task.getDescription() + "; PROJECTID: " + task.getProjectId());
             index++;
         }
     }

@@ -132,7 +132,7 @@ public class ProjectController extends AbstractController{
         System.out.println("[LIST PROJECT]");
         int index = 1;
         for (final Project project: projectService.findAll()) {
-            System.out.println(index + ". " + project.getId() + "; NAME: " + project.getName() + "; DESCRIPTION: " + project.getDescription());
+            System.out.println(index + ". PROJECTID: " + project.getId() + "; NAME: " + project.getName() + "; DESCRIPTION: " + project.getDescription());
             index++;
         }
         System.out.println("[OK]");
