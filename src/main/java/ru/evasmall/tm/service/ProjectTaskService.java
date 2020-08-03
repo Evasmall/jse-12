@@ -64,4 +64,16 @@ public class ProjectTaskService {
         return project;
     }
 
+    public Project removeProjectByNameWithTask(final String name) {
+        final Project project = projectRepository.findByName(name);
+        if (project == null) return null;
+        final List<Task> tasks = findAllByProjectId(project.getId());
+        if (tasks == null) return project;
+        for (Task task: tasks) {
+            taskRepository.removeById(task.getId());
+        }
+        projectRepository.removeById(project.getId());
+        return project;
+    }
+
 }

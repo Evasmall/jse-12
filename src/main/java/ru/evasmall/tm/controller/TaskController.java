@@ -204,4 +204,14 @@ public class TaskController extends AbstractController{
         return 0;
     }
 
+    public int removeProjectByNameWithTasks() {
+        System.out.println("[REMOVE PROJECT WITH BY NAME]");
+        System.out.println("[PLEASE ENTER PROJECT NAME:");
+        final String name = scanner.nextLine();
+        Project project = projectTaskService.removeProjectByNameWithTask(name);
+        if (project == null) System.out.println("[FAIL]");
+        else System.out.println("[OK]");
+        return 0;
+    }
+
 }
