@@ -78,6 +78,7 @@ public class Application {
             case CMD_PROJECT_REMOVE_BY_ID: return projectController.removeProjectById();
             case CMD_PROJECT_REMOVE_BY_INDEX: return projectController.removeProjectByIndex();
             case CMD_PROJECT_REMOVE_BY_ID_WITH_TASKS: return taskController.removeProjectByIdWithTasks();
+            case CMD_PROJECT_REMOVE_BY_INDEX_WITH_TASKS: return taskController.removeProjectByIndexWithTasks();
 
             case CMD_PROJECT_UPDATE_BY_INDEX: return projectController.updateProjectByIndex();
             case CMD_PROJECT_UPDATE_BY_ID: return projectController.updateProjectById();

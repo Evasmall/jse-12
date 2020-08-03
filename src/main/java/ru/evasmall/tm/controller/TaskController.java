@@ -194,4 +194,14 @@ public class TaskController extends AbstractController{
         return 0;
     }
 
+    public int removeProjectByIndexWithTasks() {
+        System.out.println("[REMOVE PROJECT WITH BY INDEX]");
+        System.out.println("[PLEASE ENTER PROJECT INDEX:");
+        final int index = scanner.nextInt() - 1;
+        Project project = projectTaskService.removeProjectByIndexWithTask(index);
+        if (project == null) System.out.println("[FAIL]");
+        else System.out.println("[OK]");
+        return 0;
+    }
+
 }

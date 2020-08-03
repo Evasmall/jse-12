@@ -52,4 +52,16 @@ public class ProjectTaskService {
         return project;
     }
 
+    public Project removeProjectByIndexWithTask(final int index) {
+        final Project project = projectRepository.findByIndex(index);
+        if (project == null) return null;
+        final List<Task> tasks = findAllByProjectId(project.getId());
+        if (tasks == null) return project;
+        for (Task task: tasks) {
+            taskRepository.removeById(task.getId());
+        }
+        projectRepository.removeById(project.getId());
+        return project;
+    }
+
 }

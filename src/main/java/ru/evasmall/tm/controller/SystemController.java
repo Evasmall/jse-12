@@ -33,6 +33,7 @@ public class SystemController {
         System.out.println("project-remove-by-id - Remove project by id.");
         System.out.println("project-remove-by-id-with-tasks - Remove project by id with tasks.");
         System.out.println("project-remove-by-index - Remove project by index.");
+        System.out.println("project-remove-by-index-with-tasks - Remove project by index with tasks.");
         System.out.println("project-update-by-id - Update project by id.");
         System.out.println("project-update-by-index - Update project by index.");
         System.out.println();
