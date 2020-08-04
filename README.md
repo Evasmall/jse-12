@@ -22,6 +22,9 @@
 | Terminal commands | 
 | ------ | 
 | version - Display program version. | 
+| registration - User registration |
+| user-list - Display list of users. |
+| user-remove-by-login - Remove user by login (only for ADMIN!). |
 | about - Display developer info. | 
 | help - Display list of terminal commands. | 
 | exit - Terminate console application. |

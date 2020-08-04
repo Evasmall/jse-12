@@ -19,6 +19,9 @@ public class SystemController {
     public int displayHelp() {
         System.out.println("version - Display program version.");
         System.out.println("about - Display developer info.");
+        System.out.println("registration - User registration");
+        System.out.println("user-list - Display list of users.");
+        System.out.println("user-remove-by-login - Remove user by login (only for ADMIN!).");
         System.out.println("help - Display list of terminal commands.");
         System.out.println("exit - Terminate console application.");
         System.out.println();
@@ -54,6 +57,7 @@ public class SystemController {
         System.out.println("task-list-by-project-id - Display task list by project id.");
         System.out.println("task-add-to_project-by-ids - Add task to project by ids.");
         System.out.println("task-remove-from-project-by-ids - Remove task from project by ids.");
+
         return 0;
     }
 

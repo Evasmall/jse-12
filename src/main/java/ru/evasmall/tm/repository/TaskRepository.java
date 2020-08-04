@@ -22,7 +22,6 @@ public class TaskRepository {
         return result;
     }
 
-
     public Task create(final String name) {
         final Task task = new Task(name);
         tasks.add(task);
