@@ -1,7 +1,5 @@
 package ru.evasmall.tm.service;
 
-import ru.evasmall.tm.entity.Project;
-import ru.evasmall.tm.entity.Task;
 import ru.evasmall.tm.entity.User;
 import ru.evasmall.tm.entity.enums.RoleEnum;
 import ru.evasmall.tm.repository.UserRepository;
