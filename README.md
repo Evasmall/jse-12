@@ -25,6 +25,7 @@
 | registration - User registration |
 | user-list - Display list of users. |
 | user-remove-by-login - Remove user by login (only for ADMIN!). |
+| user-update-role - Update user role (only for ADMIN!) |
 | about - Display developer info. | 
 | help - Display list of terminal commands. | 
 | exit - Terminate console application. |

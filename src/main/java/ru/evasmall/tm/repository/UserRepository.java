@@ -47,4 +47,16 @@ public class UserRepository {
         return user;
     }
 
+    public User updateRole(final String login, String role) {
+        final User user = findByLogin(login);
+        if (user == null) return null;
+        switch (role) {
+            case "ADMIN":
+                user.setRole(RoleEnum.ADMIN); break;
+            case "USER":
+                user.setRole(RoleEnum.USER); break;
+        }
+        return user;
+    }
+
 }

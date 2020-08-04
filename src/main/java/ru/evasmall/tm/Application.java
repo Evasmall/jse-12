@@ -113,6 +113,7 @@ public class Application {
             case CMD_USER_REGISTRATION: return userController.createUser();
             case CMD_USER_LIST: return userController.listUser();
             case CMD_USER_REMOVE_BY_LOGIN: return userController.removeUserByLogin();
+            case CMD_USER_UPDATE_ROLE: return userController.updateUserRole();
 
             default: return systemController.displayError();
         }

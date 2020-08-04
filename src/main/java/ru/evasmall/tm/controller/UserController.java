@@ -46,6 +46,7 @@ public class UserController extends AbstractController {
             System.out.println("[FAIL]");
             return -1;
         };
+        //По умолчанию при регистрации присваивается роль USER. Изменить роль может только администратор.
         final RoleEnum role = RoleEnum.USER;
         userService.create(login, firstname, lastname, middlname, email, password, role);
         System.out.println("[OK]");
@@ -73,6 +74,47 @@ public class UserController extends AbstractController {
 
     public int removeUserByLogin() {
         System.out.println("[REMOVE USER BY LOGIN]");
+        if (adminValidation() == 0) {
+            System.out.println("[PLEASE ENTER LOGIN OF REMOVE USER:");
+            final String login = scanner.nextLine();
+            final User user = userService.removeByLogin(login);
+            if (login == null) System.out.println("[FAIL]");
+            else System.out.println("[OK]");
+            return 0;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    public int updateUserRole() {
+        System.out.println("[UPDATE USER DATA]");
+        if (adminValidation() == 0) {
+            System.out.println("ENTER UPDATE USER LOGIN:");
+            final String login = scanner.nextLine();
+            final User user = userService.findByLogin(login);
+            if (user == null) {
+                System.out.println("[FAIL]");
+                return 0;
+            }
+            System.out.println("[PLEASE ENTER ROLE: ADMIN OR USER");
+            final String role = scanner.nextLine();
+            if (role.equals("ADMIN") || role.equals("USER")) {
+                userService.updateRole(login, role);
+                System.out.println("[OK]");
+                return 0;
+            }
+            else {
+                System.out.println("[UNKNOWN ROLE!]");
+                return 0;
+            }
+        }
+        else {
+            return -1;
+        }
+    }
+
+    public int adminValidation() {
         System.out.println("[PLEASE ENTER YOUR ADMIN LOGIN:]");
         final String login_admin = scanner.nextLine();
         //Проверка на существование логина
@@ -80,18 +122,13 @@ public class UserController extends AbstractController {
             System.out.println("[THIS LOGIN NOT EXISTS!]");
             System.out.println("[FAIL]");
             return -1;
-        };
+        }
         //Проверка на права администратора
         if (userService.findByLogin(login_admin).getRole().name().equals("ADMIN")) {
             System.out.println("[PLEASE ENTER YOUR PASSWORD:]");
             final String password_admin = scanner.nextLine();
             //Проверка пароля
             if (MD5Hash.getHash(password_admin, "MD5").equals(userService.findByLogin(login_admin).getPassword())) {
-                System.out.println("[PLEASE ENTER LOGIN OF REMOVE USER:");
-                final String login = scanner.nextLine();
-                final User user = userService.removeByLogin(login);
-                if (login == null) System.out.println("[FAIL]");
-                else System.out.println("[OK]");
                 return 0;
             }
             else {

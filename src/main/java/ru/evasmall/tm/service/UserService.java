@@ -39,4 +39,10 @@ public class UserService {
         return userRepository.removeByLogin(login);
     }
 
+    public User updateRole(String login, String role) {
+        if (login == null || login.isEmpty()) return null;
+        if (role == null || role.isEmpty()) return null;
+        return userRepository.updateRole(login, role);
+    }
+
 }

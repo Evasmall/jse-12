@@ -41,5 +41,6 @@ public class TerminalConst {
     public static final String CMD_USER_REGISTRATION = "registration";
     public static final String CMD_USER_LIST = "user-list";
     public static final String CMD_USER_REMOVE_BY_LOGIN = "user-remove-by-login";
+    public static final String CMD_USER_UPDATE_ROLE = "user-update-role";
 
 }

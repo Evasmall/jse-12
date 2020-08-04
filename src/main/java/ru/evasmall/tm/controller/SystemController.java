@@ -22,6 +22,7 @@ public class SystemController {
         System.out.println("registration - User registration");
         System.out.println("user-list - Display list of users.");
         System.out.println("user-remove-by-login - Remove user by login (only for ADMIN!).");
+        System.out.println("user-update-role - Update user role (only for ADMIN!)");
         System.out.println("help - Display list of terminal commands.");
         System.out.println("exit - Terminate console application.");
         System.out.println();
