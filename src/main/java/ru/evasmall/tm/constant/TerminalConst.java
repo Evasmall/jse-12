@@ -39,8 +39,13 @@ public class TerminalConst {
     public static final String CMD_TASK_REMOVE_FROM_PROJECT_BY_IDS = "task-remove-from-project-by-ids";
 
     public static final String CMD_USER_REGISTRATION = "registration";
+    public static final String CMD_USER_SIGN = "sign";
     public static final String CMD_USER_LIST = "user-list";
     public static final String CMD_USER_REMOVE_BY_LOGIN = "user-remove-by-login";
     public static final String CMD_USER_UPDATE_ROLE = "user-update-role";
+    public static final String CMD_USER_PROFILE_VIEW = "user-profile";
+    public static final String CMD_USER_PROFILE_UPDATE = "user-profile-update";
+    public static final String CMD_PASSWORD_CHANGE = "password-change";
+    public static final String CMD_USER_EXIT = "user-exit";
 
 }

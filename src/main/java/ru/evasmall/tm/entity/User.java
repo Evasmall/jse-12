@@ -1,12 +1,16 @@
 package ru.evasmall.tm.entity;
 
-import ru.evasmall.tm.entity.enums.RoleEnum;
+import ru.evasmall.tm.enumerated.RoleEnum;
 
 import java.util.Objects;
 
 public class User {
 
+    private Long userid = System.nanoTime();
+
     private String login = "";
+
+    private String password = "";
 
     private String firstname = "";
 
@@ -16,11 +20,19 @@ public class User {
 
     private String email = "";
 
-    private String password = "";
-
     private RoleEnum role;
 
+    private boolean admin_true = false;
+
     public User() {}
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
+    }
 
     public User(String login) {
         this.login = login;
@@ -80,6 +92,14 @@ public class User {
 
     public void setRole(RoleEnum role) {
         this.role = role;
+    }
+
+    public boolean isAdmin_true() {
+        return admin_true;
+    }
+
+    public void setAdmin_true(boolean admin_true) {
+        this.admin_true = admin_true;
     }
 
     @Override

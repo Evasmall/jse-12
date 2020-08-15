@@ -19,10 +19,11 @@ public class ProjectRepository {
         return project;
     }
 
-    public Project create(final String name, String description) {
+    public Project create(final String name, String description, Long userid) {
         final Project project = new Project(name);
         project.setName(name);
         project.setDescription(description);
+        project.setUserid(userid);
         projects.add(project);
         return project;
     }

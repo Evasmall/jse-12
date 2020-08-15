@@ -4,6 +4,7 @@ public class SystemController {
 
     public void displayWelcome() {
         System.out.println("*** WELCOME TO TASK MANAGER! ***");
+        System.out.println("PLEASE ENTER [sign] OR [registration] or [help]:");
     }
 
     public int displayExit() {
@@ -16,15 +17,36 @@ public class SystemController {
         return -1;
     }
 
+    public int displayForeign(String name) {
+        System.out.println(name + " NOT FOUND OR FOREIGN " + name + ". FAIL.");
+        return -1;
+    }
+
+    public int displayForAdminOnly() {
+        System.out.println("THIS FUNCTIONALITY IS FOR ADMINS ONLY! FAIL.");
+        return -1;
+    }
+
+    public int displayNotInt() {
+        System.out.println("THIS IS NOT NUMBER. FAIL.");
+        return -1;
+    }
+
     public int displayHelp() {
         System.out.println("version - Display program version.");
         System.out.println("about - Display developer info.");
+        System.out.println("help - Display list of terminal commands.");
+        System.out.println("exit - Terminate console application.");
+        System.out.println();
         System.out.println("registration - User registration");
+        System.out.println("sign - User sign.");
         System.out.println("user-list - Display list of users.");
         System.out.println("user-remove-by-login - Remove user by login (only for ADMIN!).");
         System.out.println("user-update-role - Update user role (only for ADMIN!)");
-        System.out.println("help - Display list of terminal commands.");
-        System.out.println("exit - Terminate console application.");
+        System.out.println("user-profile - Display current user session.");
+        System.out.println("user-profile-update - Update current user profile.");
+        System.out.println("password-change - Change current user password.");
+        System.out.println("user-exit - Terminate current session.");
         System.out.println();
         System.out.println("project-list - Display list of projects.");
         System.out.println("project-create - Create new project by name.");
@@ -58,7 +80,6 @@ public class SystemController {
         System.out.println("task-list-by-project-id - Display task list by project id.");
         System.out.println("task-add-to_project-by-ids - Add task to project by ids.");
         System.out.println("task-remove-from-project-by-ids - Remove task from project by ids.");
-
         return 0;
     }
 

@@ -28,10 +28,11 @@ public class TaskRepository {
         return task;
     }
 
-    public Task create(final String name, String description) {
+    public Task create(final String name, final String description, final Long userId) {
         final Task task = new Task(name);
         task.setName(name);
         task.setDescription(description);
+        task.setUserid(userId);
         tasks.add(task);
         return task;
     }

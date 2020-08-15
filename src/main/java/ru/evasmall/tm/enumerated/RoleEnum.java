@@ -1,4 +1,4 @@
-package ru.evasmall.tm.entity.enums;
+package ru.evasmall.tm.enumerated;
 
 public enum RoleEnum {
     USER,

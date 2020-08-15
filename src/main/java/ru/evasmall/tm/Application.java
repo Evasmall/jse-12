@@ -4,18 +4,19 @@ import ru.evasmall.tm.controller.ProjectController;
 import ru.evasmall.tm.controller.SystemController;
 import ru.evasmall.tm.controller.TaskController;
 import ru.evasmall.tm.controller.UserController;
-import ru.evasmall.tm.entity.enums.RoleEnum;
+import ru.evasmall.tm.enumerated.RoleEnum;
 import ru.evasmall.tm.repository.ProjectRepository;
 import ru.evasmall.tm.repository.TaskRepository;
 import ru.evasmall.tm.repository.UserRepository;
 import ru.evasmall.tm.service.*;
+import ru.evasmall.tm.util.HashCode;
 
 import java.util.Scanner;
 
 import static ru.evasmall.tm.constant.TerminalConst.*;
 
 /**
- * JAVA lesson application. Output terminal parameters.
+ * Приложение для обучения JAVA.
  */
 public class Application {
 
@@ -28,21 +29,26 @@ public class Application {
     private final ProjectTaskService projectTaskService = new ProjectTaskService(projectRepository, taskRepository);
     private final UserService userService = new UserService(userRepository);
 
-    private final ProjectController projectController = new ProjectController(projectService);
-    private final TaskController taskController = new TaskController(taskService, projectTaskService);
+    private final ProjectController projectController = new ProjectController(projectService, userService);
+    private final TaskController taskController = new TaskController(taskService, projectTaskService, userService, projectService);
     private final SystemController systemController = new SystemController();
     private final UserController userController = new UserController(userService);
 
-    {
-        projectRepository.create("DEMO_PROJECT_1", "DESC PROJECT 1");
-        projectRepository.create("DEMO_PROJECT_2", "DESC PROJECT 2");
-        projectRepository.create("DEMO_PROJECT_3", "DESC PROJECT 3");
-        taskRepository.create("TEST_TASK_1", "DESC TASK 1");
-        taskRepository.create("TEST_TASK_2", "DESC TASK 2");
-        taskRepository.create("TEST_TASK_3", "DESC TASK 3");
+    //Текущая сессия пользователя
+    public static Long userIdCurrent = null;
 
-        userRepository.create("ADMIN", "Василий", "Чапаев", "Иванович", "chapaev_vi@gmail.com", MD5Hash.getHash("POBEDA", "MD5"), RoleEnum.ADMIN);
-        userRepository.create("TEST", "Пётр", "Исаев", "Семёнович", "isaev_ps@gmail.com", MD5Hash.getHash("battalion", "MD5"), RoleEnum.USER);
+    {
+        userService.create(System.nanoTime(),"ADMIN", HashCode.getHash("POBEDA"), "Василий", "Чапаев",
+                           "Иванович", "chapaev_vi@gmail.com", RoleEnum.ADMIN, true);
+        userService.create(System.nanoTime(),"TEST", HashCode.getHash("qwerty"), "Пётр", "Исаев",
+                                     "Семёнович", "isaev_ps@gmail.com", RoleEnum.USER, false);
+
+        projectRepository.create("DEMO_PROJECT_1", "DESC PROJECT 1", userService.findByLogin("ADMIN").getUserid());
+        projectRepository.create("DEMO_PROJECT_2", "DESC PROJECT 2", userService.findByLogin("TEST").getUserid());
+        projectRepository.create("DEMO_PROJECT_3", "DESC PROJECT 3", userService.findByLogin("TEST").getUserid());
+        taskRepository.create("TEST_TASK_1", "DESC TASK 1", userService.findByLogin("ADMIN").getUserid() );
+        taskRepository.create("TEST_TASK_2", "DESC TASK 2", userService.findByLogin("TEST").getUserid());
+        taskRepository.create("TEST_TASK_3", "DESC TASK 3", userService.findByLogin("TEST").getUserid());
     }
 
     public static void main(final String[] args) {
@@ -111,9 +117,14 @@ public class Application {
             case CMD_TASK_LIST_BY_PROJECT_ID: return taskController.listTaskByProjectId();
 
             case CMD_USER_REGISTRATION: return userController.createUser();
+            case CMD_USER_SIGN: return userController.signUser();
+            case CMD_USER_EXIT: return userController.exitUser();
             case CMD_USER_LIST: return userController.listUser();
-            case CMD_USER_REMOVE_BY_LOGIN: return userController.removeUserByLogin();
-            case CMD_USER_UPDATE_ROLE: return userController.updateUserRole();
+            case CMD_USER_REMOVE_BY_LOGIN: return userController.removeUserByLogin(userIdCurrent);
+            case CMD_USER_UPDATE_ROLE: return userController.updateUserRole(userIdCurrent);
+            case CMD_USER_PROFILE_VIEW: return userController.userProfile(userIdCurrent);
+            case CMD_USER_PROFILE_UPDATE: return userController.updateProfile(userIdCurrent);
+            case CMD_PASSWORD_CHANGE: return userController.changePassword(userIdCurrent);
 
             default: return systemController.displayError();
         }

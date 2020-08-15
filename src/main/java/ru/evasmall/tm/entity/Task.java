@@ -10,8 +10,7 @@ public class Task {
 
     private Long projectId;
 
-    public Task() {
-    }
+    private Long userid = System.nanoTime();
 
     public Task(String name) {
         this.name = name;
@@ -47,6 +46,14 @@ public class Task {
 
     public void setProjectId(Long projectId) {
         this.projectId = projectId;
+    }
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 
     @Override

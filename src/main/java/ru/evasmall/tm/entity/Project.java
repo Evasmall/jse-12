@@ -8,6 +8,8 @@ public class Project {
 
     private String description = "";
 
+    private Long userid = System.nanoTime();
+
     public Project() {
     }
 
@@ -37,6 +39,14 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 
     @Override
